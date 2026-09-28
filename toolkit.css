@@ -1,0 +1,34 @@
+.toolkit-section{padding:90px 0 100px;overflow:clip;background:linear-gradient(180deg,var(--paper),var(--soft) 48%,var(--paper));scroll-margin-top:28px}
+.toolkit-heading{text-align:center;margin-bottom:42px}
+.toolkit-heading h2{font-size:clamp(2.5rem,4.6vw,4.4rem);line-height:1.1;font-weight:500;letter-spacing:-.05em}
+.toolkit-heading>p:last-child{color:var(--muted);font-size:1rem;line-height:1.75;margin:22px 0 0}
+.toolkit-window{max-width:1160px;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);overflow:hidden;padding-block:10px}
+.toolkit-rows{display:grid;gap:18px}
+.tool-lane{overflow:hidden}
+.tool-track{display:flex;width:max-content;animation:tool-drift 38s linear infinite;animation-play-state:paused}
+.tool-lane-2 .tool-track{animation-duration:44s;animation-direction:reverse}
+.tool-lane-3 .tool-track{animation-duration:41s}
+.tool-group{margin:0;padding:0 18px 0 0;display:flex;gap:18px;list-style:none;flex-shrink:0}
+.tool-tile{display:flex;flex-direction:column;justify-content:center;align-items:center;width:222px;height:140px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 4px 14px #18315104;transition:border-color .3s ease,background .3s ease}
+.tool-logo{display:flex;align-items:center;justify-content:center;width:148px;height:47px;margin-bottom:10px;border-radius:8px;background:#fff}
+.tool-logo img{width:130px;height:35px;object-fit:contain}
+.tool-name{font-size:.84rem;font-weight:550;line-height:1.4;letter-spacing:-.01em;color:var(--ink)}
+.tool-purpose{font-size:.68rem;color:var(--muted);line-height:1.5;margin-top:3px}
+.toolkit-section.is-visible:not(.is-paused) .tool-track{animation-play-state:running}
+.toolkit-section:hover .tool-track,.toolkit-section:focus-within .tool-track{animation-play-state:paused!important}
+.tool-tile:hover{border-color:var(--blue);background:var(--soft)}
+.toolkit-footer{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:28px}
+.toolkit-footer p{margin:0;font-size:.75rem;color:var(--muted);line-height:1.6}
+.toolkit-pause{display:grid;place-items:center;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:50%;width:36px;height:36px;flex:0 0 auto;font-size:.8rem}
+@keyframes tool-drift{to{transform:translateX(-33.333333%)}}
+.toolkit-section.is-reduced .toolkit-window{mask-image:none;overflow:visible}
+.toolkit-section.is-reduced .tool-track{animation:none;width:100%;transform:none}
+.toolkit-section.is-reduced .tool-group[aria-hidden]{display:none}
+.toolkit-section.is-reduced .tool-group{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;padding:0}
+.toolkit-section.is-reduced .tool-tile{width:100%}
+.toolkit-section.is-reduced .toolkit-pause{display:none}
+@media(max-width:700px){.toolkit-section{padding:60px 0 65px}.toolkit-heading h2{font-size:clamp(2.3rem,8.4vw,3.3rem)}.toolkit-heading{margin-bottom:28px}.toolkit-heading>p:last-child{font-size:.94rem}.toolkit-window{width:100%;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}.tool-tile{width:180px;height:125px;border-radius:14px}.tool-group{gap:12px;padding-right:12px}.toolkit-rows{gap:12px}.tool-logo{height:40px;margin-bottom:8px;width:140px}.tool-logo img{height:30px;max-width:120px}.tool-name{font-size:.77rem}.tool-purpose{font-size:.62rem}.toolkit-footer{gap:12px;margin-top:22px}.toolkit-footer p{font-size:.7rem;max-width:260px}.toolkit-section.is-reduced .toolkit-window{width:calc(100% - 40px)}.toolkit-section.is-reduced .tool-group{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.toolkit-section.is-reduced .tool-logo{max-width:95%}}
+@media(prefers-reduced-motion:reduce){.tool-track{animation:none!important}.tool-group[aria-hidden]{display:none}.tool-track{width:100%}.tool-group{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;padding:0}.tool-tile{width:100%}.toolkit-window{mask-image:none;overflow:visible}.toolkit-pause{display:none}}
+@media(prefers-reduced-motion:reduce) and (max-width:700px){.tool-group{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.toolkit-window{width:calc(100% - 40px)}}
+
+.workspace-wordmark{font-family:Arial,sans-serif;font-size:14px;font-weight:600;color:#4285f4;letter-spacing:-.4px}

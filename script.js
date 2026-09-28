@@ -35,9 +35,12 @@ const PROJECTS = {
 // Existing published figures, retained with screenshots. Update together if you have new insights.
 const ACCOUNTS = {
   sports: {
-    label: "Sports community · Padel club & lifestyle content",
-    stats: [["336K", "Reel views"], ["226K", "Accounts reached"], ["8.5s", "Average watch time"]],
-    secondary: [["3.3K", "likes"], ["10K", "shares"], ["592", "saves"], ["119", "comments"], ["127", "reposts"]],
+    label: "Sports community · Instagram reel",
+    headline: "One reel. A conversation worth sharing.",
+    description: "A relatable moment from padel life, shared far beyond the original post. 10K shares show how often viewers chose to pass it along.",
+    context: "Posted February 26, 2026 · Insights saved April 19, 2026",
+    stats: [["336K", "Reel views"], ["226K", "Accounts reached"], ["10K", "Shares"]],
+    secondary: [["3.3K", "likes"], ["8.5s", "avg. watch time"], ["592", "saves"], ["119", "comments"], ["127", "reposts"]],
     images: [
       { title: "Featured reel — 336K views", file: "insights-screenshot-D6ewWz_S.jpg" },
       { title: "Viral reel — 76K views", file: "insights-screenshot-3-CCPzloDk.jpg" },
@@ -46,7 +49,10 @@ const ACCOUNTS = {
     note: "Performance snapshots from my existing portfolio. The featured reel, second reel, and 30-day account overview are separate views; open each screenshot for its reporting context.",
   },
   personal: {
-    label: "Personal brand · Cross-platform lifestyle & coaching",
+    label: "Personal brand · Instagram & Facebook reel",
+    headline: "Reaching beyond an existing audience.",
+    description: "A cross-platform reel with 29,888 total views. More than half of those views came from people who weren’t following the account.",
+    context: "Single-reel snapshot · Instagram and Facebook",
     stats: [["29.9K", "Total views"], ["57.6%", "Views from non-followers"], ["3h 22m", "Watch time"]],
     secondary: [["4.6K", "Instagram views"], ["25.3K", "Facebook views"], ["42.4%", "followers"], ["57.6%", "non-followers"]],
     images: [{ title: "Cross-platform reel — 29,888 views", file: "insights-personal-1-C7d-2PIq.jpg" }],
@@ -236,7 +242,19 @@ function renderAccount(key) {
     button.addEventListener("click", () => openPreview(project, button));
     gallery.append(button);
   });
-  container.append(label, stats, secondary, gallery, element("p", "results-note", account.note));
+  const feature = element("div", "result-feature");
+  const story = element("div", "result-story");
+  story.append(label, element("h3", "result-headline", account.headline), element("p", "result-description", account.description), stats, secondary, element("p", "result-context", account.context));
+  const evidence = element("div", "result-evidence");
+  evidence.append(element("p", "evidence-label", "THE ORIGINAL INSIGHTS"), gallery.firstElementChild);
+  feature.append(story, evidence);
+  container.append(feature);
+  if (gallery.children.length) {
+    const more = element("details", "result-more");
+    more.append(element("summary", "", "More performance snapshots +"), gallery);
+    container.append(more);
+  }
+  container.append(element("p", "results-note", account.note));
   document.querySelectorAll("[data-account]").forEach((button) => {
     const active = button.dataset.account === key;
     button.classList.toggle("active", active);
